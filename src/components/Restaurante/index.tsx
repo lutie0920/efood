@@ -1,21 +1,52 @@
 import Button from '../Button'
-const Restaurante = () => (
-  <div>
-    <img src="//placehold.it/472x218" />
-    <div>
-      <h3>
-        Hioki Sushi<h3>4.9</h3>
-        <img src={"//plcehold.it/22x22"} />
-      </h3>
-    </div>
-    <p>
-        Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis
-        frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega
-        rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão
-        sem sair do lar com nosso delivery!
-    </p>
-    <Button to="#">Saiba mais</Button>
-  </div>
+import Tag from '../Tag'
+
+import {
+  Card,
+  Descricao,
+  Titulo,
+  Avaliacao,
+  Apresentacao,
+  Infos,
+  EstrelaImg
+} from './styles'
+
+type Props = {
+  image: string
+  name: string
+  avaliacao: string
+  description: string
+  infos: string[]
+  estrela: string
+}
+
+const Restaurante = ({
+  image,
+  name,
+  avaliacao,
+  description,
+  infos,
+  estrela
+}: Props) => (
+  <Card>
+    <img src={image} />
+    <Infos>
+      {infos.map((info) => (
+        <Tag key={info}>{info}</Tag>
+      ))}
+    </Infos>
+    <Apresentacao>
+      <Titulo>
+        {name}
+        <Avaliacao>
+          {avaliacao}
+          <EstrelaImg src={estrela} />
+        </Avaliacao>
+      </Titulo>
+      <Descricao>{description}</Descricao>
+      <Button to="/menu">Saiba mais</Button>
+    </Apresentacao>
+  </Card>
 )
 
 export default Restaurante

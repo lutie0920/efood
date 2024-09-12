@@ -23,6 +23,6 @@ export const GlobalCss = createGlobalStyle`
 .container {
   max-width: 1024px;
   width: 100%;
-  margin-left: 171px;
+  margin: 0 auto;
 }
 `

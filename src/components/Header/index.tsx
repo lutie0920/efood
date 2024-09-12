@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { HeaderBar, Links, LinkCart, Imagem } from './styles'
 
 import fundo from '../../assets/images/fundo.svg'
@@ -9,7 +10,7 @@ const Header = () => (
     <HeaderBar style={{ backgroundImage: `url(${fundo})` }}>
       <Links>
         <li>
-          <a href="/">Restaurantes</a>
+          <Link to="/">Restaurantes</Link>
         </li>
       </Links>
       <img src={logo} alt="EFOOD" />

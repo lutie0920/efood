@@ -5,9 +5,6 @@ export const HeaderBar = styled.header`
   width: 100%;
   height: 186px;
   margin-top: 23px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 
   a {
     color: ${cores.rosa};
@@ -16,15 +13,11 @@ export const HeaderBar = styled.header`
     font-weight: 900;
   }
 `
-
-export const Links = styled.ul`
+export const DivLink = styled.div`
   display: flex;
-  margin-left: 171px;
-`
-
-export const LinkCart = styled.a`
-  margin-right: 171px;
-  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 40px;
 `
 export const Imagem = styled.div`
   width: 100%;
@@ -38,13 +31,11 @@ export const Imagem = styled.div`
     font-size: 32px;
     font-weight: 100;
     padding-top: 20px;
-    margin-left: 170px;
   }
 
   p {
     font-size: 32px;
     font-weight: 900;
-    margin-left: 170px;
     padding-top: 158.75px;
   }
 `

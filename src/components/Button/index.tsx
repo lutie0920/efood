@@ -5,14 +5,14 @@ type Props = {
   title: string
   to?: string
   onClick?: () => void
-  children: string
+  children?: string
 }
 
 const Button = ({ type, title, to, onClick, children }: Props) => {
   if (type === 'button') {
     return (
       <ButtonContainer type="button" title={title} onClick={onClick}>
-        {children}
+        Adicionar ao carrinho - {children}
       </ButtonContainer>
     )
   }

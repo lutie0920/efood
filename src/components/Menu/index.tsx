@@ -9,11 +9,12 @@ import {
   ModalStyle
 } from './styles'
 
-import marguerita from '../../assets/images/pizza.jpg'
 import close from '../../assets/images/close.png'
 
 import Button from '../Button'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Cardapio, Restaurantes } from '../../pages/Home'
+import { useParams } from 'react-router-dom'
 
 type Props = {
   name: string
@@ -23,6 +24,14 @@ type Props = {
 
 const Menu = ({ name, description, image }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
+  const [cardapio, setCardapio] = useState<Cardapio>()
+
+  const formataPreco = (preco = 0) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco)
+  }
 
   return (
     <>
@@ -34,34 +43,21 @@ const Menu = ({ name, description, image }: Props) => {
           type="button"
           title="sobre o cardápio"
           onClick={() => setModalEstaAberto(true)}
-        >
-          Adicionar ao carrinho
-        </Button>
+        ></Button>
       </Card>
       <ModalStyle className={modalEstaAberto ? 'visivel' : ''}>
         <ModalContent className="container">
-          <ImgPizza src={marguerita} alt="imagem da pizza marguerita" />
+          <ImgPizza src={cardapio?.foto} alt="imagem do cardápio" />
           <div>
-            <h4>Pizza Marguerita</h4>
-            <p>
-              A pizza Margherita é uma pizza clássica da culinária italiana,
-              reconhecida por sua simplicidade e sabor inigualável. Ela é feita
-              com uma base de massa fina e crocante, coberta com molho de tomate
-              fresco, queijo mussarela de alta qualidade, manjericão fresco e
-              azeite de oliva extra-virgem. A combinação de sabores é perfeita,
-              com o molho de tomate suculento e ligeiramente ácido, o queijo
-              derretido e cremoso e as folhas de manjericão frescas, que
-              adicionam um toque de sabor herbáceo. É uma pizza simples, mas
-              deliciosa, que agrada a todos os paladares e é uma ótima opção
-              para qualquer ocasião.
-            </p>
-            <p>Serve: de 2 a 3 pessoas</p>
+            <h4>{cardapio?.nome}</h4>
+            <p>{cardapio?.descricao}</p>
+            <p>{cardapio?.porcao}</p>
             <Button
               type="link"
-              to="/Perfil"
+              to={`/perfil/${cardapio?.id}`}
               title="clique aqui para adicionar ao carrinho"
             >
-              Adicionar ao carrinho - R$ 60,90
+              {formataPreco(cardapio?.preco)}
             </Button>
           </div>
           <ImgClose

@@ -1,32 +1,29 @@
-import { useEffect, useState } from 'react'
-import { Cardapio, Restaurantes } from '../../pages/Home'
 import Menu from '../Menu'
 
 import { Container, List } from './styles'
+import { Restaurantes } from '../../pages/Home'
 
 export type Props = {
-  menu: Cardapio[]
+  menu: Restaurantes[]
 }
 
 const MenuList = ({ menu }: Props) => {
-  const [cardapio, setCardapio] = useState()
-
-  if (!cardapio) {
-    return <h3>Carregando...</h3>
-  }
-
   return (
     <Container>
       <div className="container">
         <List>
-          {menu.map((menu) => (
-            <Menu
-              key={menu.id}
-              image={menu.foto}
-              name={menu.nome}
-              description={menu.descricao}
-            />
-          ))}
+          {Array.isArray(menu) &&
+            menu?.map((menu) => (
+              <Menu
+                key={menu.cardapio.id}
+                image={menu.cardapio.foto}
+                name={menu.cardapio.nome}
+                description={menu.cardapio.descricao}
+                porcao={menu.cardapio.porcao}
+                id={menu.cardapio.id}
+                preco={menu.cardapio.preco}
+              />
+            ))}
         </List>
       </div>
     </Container>

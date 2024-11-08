@@ -6,9 +6,9 @@ import estrela from '../../assets/images/estrela.png'
 import Button from '../Button'
 import { useEffect, useState } from 'react'
 import { Restaurantes } from '../../pages/Home'
-import { useParams } from 'react-router-dom'
 
 type Props = {
+  id: number
   name: string
   rating: string
   infos: string[]
@@ -18,6 +18,7 @@ type Props = {
 }
 
 const Restaurant = ({
+  id,
   name,
   infos,
   rating,
@@ -25,8 +26,6 @@ const Restaurant = ({
   image,
   type
 }: Props) => {
-  const { id } = useParams()
-
   const [restaurantes, setRestaurante] = useState<Restaurantes[]>([])
 
   useEffect(() => {
@@ -63,7 +62,7 @@ const Restaurant = ({
       <Descricao>{getDescricao(description)}</Descricao>
       <Button
         type="link"
-        to={`/perfil/${restaurantes}`}
+        to={`/perfil/${id}`}
         title="clique aqui para mais informações do restaurante"
       >
         Saiba mais

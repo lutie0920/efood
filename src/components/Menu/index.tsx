@@ -13,18 +13,27 @@ import close from '../../assets/images/close.png'
 
 import Button from '../Button'
 import { useEffect, useState } from 'react'
-import { Cardapio, Restaurantes } from '../../pages/Home'
 import { useParams } from 'react-router-dom'
+import { Restaurantes } from '../../pages/Home'
 
 type Props = {
   name: string
   description: string
   image: string
+  porcao: string
+  id?: number
+  preco: number
 }
 
-const Menu = ({ name, description, image }: Props) => {
+const Menu = ({ name, description, image, porcao, preco }: Props) => {
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 160) {
+      return descricao.slice(0, 157) + '...'
+    }
+    return descricao
+  }
+
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
-  const [cardapio, setCardapio] = useState<Cardapio>()
 
   const formataPreco = (preco = 0) => {
     return new Intl.NumberFormat('pt-BR', {
@@ -38,7 +47,7 @@ const Menu = ({ name, description, image }: Props) => {
       <Card>
         <Image src={image} />
         <Titulo>{name}</Titulo>
-        <Descricao>{description}</Descricao>
+        <Descricao>{getDescricao(description)}</Descricao>
         <Button
           type="button"
           title="sobre o cardápio"
@@ -47,17 +56,17 @@ const Menu = ({ name, description, image }: Props) => {
       </Card>
       <ModalStyle className={modalEstaAberto ? 'visivel' : ''}>
         <ModalContent className="container">
-          <ImgPizza src={cardapio?.foto} alt="imagem do cardápio" />
+          <ImgPizza src={image} alt="imagem do cardápio" />
           <div>
-            <h4>{cardapio?.nome}</h4>
-            <p>{cardapio?.descricao}</p>
-            <p>{cardapio?.porcao}</p>
+            <h4>{name}</h4>
+            <p>{getDescricao(description)}</p>
+            <p>{porcao}</p>
             <Button
               type="link"
-              to={`/perfil/${cardapio?.id}`}
+              to={`/perfil/`}
               title="clique aqui para adicionar ao carrinho"
             >
-              {formataPreco(cardapio?.preco)}
+              {formataPreco(preco)}
             </Button>
           </div>
           <ImgClose

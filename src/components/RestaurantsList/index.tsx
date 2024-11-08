@@ -29,6 +29,7 @@ const ProductsList = ({ restaurantes }: Props) => {
               rating={rest.avaliacao}
               name={rest.titulo}
               description={rest.descricao}
+              id={rest.id}
             />
           ))}
         </List>

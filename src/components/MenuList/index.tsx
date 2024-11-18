@@ -1,29 +1,29 @@
 import Menu from '../Menu'
 
 import { Container, List } from './styles'
-import { Restaurantes } from '../../pages/Home'
+import { Cardapio } from '../../pages/Home'
 
 export type Props = {
-  menu: Restaurantes[]
+  menu: Cardapio[]
 }
 
 const MenuList = ({ menu }: Props) => {
+  console.log(menu)
   return (
     <Container>
       <div className="container">
         <List>
-          {Array.isArray(menu) &&
-            menu?.map((menu) => (
-              <Menu
-                key={menu.cardapio.id}
-                image={menu.cardapio.foto}
-                name={menu.cardapio.nome}
-                description={menu.cardapio.descricao}
-                porcao={menu.cardapio.porcao}
-                id={menu.cardapio.id}
-                preco={menu.cardapio.preco}
-              />
-            ))}
+          {menu.map((menu) => (
+            <Menu
+              key={menu.id}
+              image={menu.foto}
+              name={menu.nome}
+              description={menu.descricao}
+              porcao={menu.porcao}
+              id={menu.id}
+              preco={menu.preco}
+            />
+          ))}
         </List>
       </div>
     </Container>

@@ -11,14 +11,16 @@ export type Restaurantes = {
   avaliacao: string
   descricao: string
   capa: string
-  cardapio: {
-    foto: string
-    preco: number
-    nome: string
-    descricao: string
-    porcao: string
-    id: number
-  }
+  cardapio: Cardapio[]
+}
+
+export type Cardapio = {
+  id: number
+  preco: number
+  foto: string
+  nome: string
+  descricao: string
+  porcao: string
 }
 
 const Home = () => {

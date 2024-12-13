@@ -20,20 +20,25 @@ export const DivLink = styled.div`
   padding-top: 40px;
 `
 export const Imagem = styled.div`
+  position: absolute;
   width: 100%;
   height: 280px;
   display: block;
   background-repeat: no-repeat;
   background-size: cover;
-  color: #fff;
-
+  filter: brightness(50%);
+`
+export const DivTitulo = styled.div`
+  position: relative;
   h2 {
+    color: #fff;
     font-size: 32px;
-    font-weight: 100;
+    font-weight: 400;
     padding-top: 20px;
   }
 
   p {
+    color: #fff;
     font-size: 32px;
     font-weight: 900;
     padding-top: 158.75px;

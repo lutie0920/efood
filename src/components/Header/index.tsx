@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { HeaderBar, Imagem, DivLink } from './styles'
+import { HeaderBar, Imagem, DivLink, DivTitulo } from './styles'
 
 import fundo from '../../assets/images/fundo.svg'
 import logo from '../../assets/images/logo.svg'
@@ -32,12 +32,13 @@ const Header = () => {
           <Link to="#">0 produto(s) no carrinho</Link>
         </DivLink>
       </HeaderBar>
-      <Imagem style={{ backgroundImage: `url(${rest.capa})` }}>
-        <div className="container">
+      <div>
+        <Imagem style={{ backgroundImage: `url(${rest.capa})` }} />
+        <DivTitulo className="container">
           <h2>{rest.tipo}</h2>
           <p>{rest.titulo}</p>
-        </div>
-      </Imagem>
+        </DivTitulo>
+      </div>
     </header>
   )
 }

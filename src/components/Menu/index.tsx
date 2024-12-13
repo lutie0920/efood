@@ -12,9 +12,7 @@ import {
 import close from '../../assets/images/close.png'
 
 import Button from '../Button'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { Restaurantes } from '../../pages/Home'
+import { useState } from 'react'
 
 type Props = {
   name: string
@@ -62,7 +60,7 @@ const Menu = ({ name, description, image, porcao, preco }: Props) => {
             <p>{getDescricao(description)}</p>
             <p>{porcao}</p>
             <Button
-              type="link"
+              type="linkPrice"
               to={`/perfil/`}
               title="clique aqui para adicionar ao carrinho"
             >
